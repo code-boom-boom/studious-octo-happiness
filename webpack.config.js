@@ -1,0 +1,90 @@
+/**
+ * Webpack Config
+ */
+const path = require("path");
+const fs = require("fs");
+
+const publicPath = "/";
+
+const appDirectory = fs.realpathSync(process.cwd());
+const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
+
+// plugins
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+module.exports = {
+    entry: ["./src/index.js"],
+    output: {
+        path: resolveApp("dist"),
+        filename: "static/js/[name].[hash:8].js",
+        publicPath: publicPath
+    },
+    devServer: {
+        host: "127.0.0.1",
+        compress: true,
+        port: 3000,
+    },
+    module: {
+        rules: [
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader"
+                }
+            },
+            {
+                test: /\.html$/,
+                use: [
+                    {
+                        loader: "html-loader",
+                        options: { minimize: true }
+                    }
+                ]
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                    {
+                        loader: "url-loader",
+                        options: {
+                            limit: 10000,
+                            name: "static/media/[name].[hash:8].[ext]"
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.css$/,
+                use: [MiniCssExtractPlugin.loader, "css-loader"]
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|svg)$/,
+                use: [
+                    {
+                        loader: "url-loader",
+                        options: {
+                            limit: 100000
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    "sass-loader",
+                ]
+            }
+        ]
+    },
+    plugins: [
+        new HtmlWebPackPlugin({
+            template: "./public/index.html",
+            filename: "./index.html",
+            favicon: "./public/favicon.ico"
+        })
+    ]
+}
