@@ -3,6 +3,9 @@
  */
 import React from "react";
 
+// css
+import "./lib/facebookCss";
+
 function App() {
   return (
     <div className="App">

@@ -25,6 +25,11 @@ module.exports = {
         compress: true,
         port: 3000,
     },
+    resolve: {
+        alias: {
+            Assets: path.resolve(__dirname, "src/assets/")
+        }
+    },
     module: {
         rules: [
             {
@@ -85,6 +90,10 @@ module.exports = {
             template: "./public/index.html",
             filename: "./index.html",
             favicon: "./public/favicon.ico"
+        }),
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+            chunkFilename: "static/css/[name].[hash:8].css"
         })
     ]
 }
