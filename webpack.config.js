@@ -12,6 +12,7 @@ const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 // plugins
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = {
     entry: ["./src/index.js"],
@@ -27,7 +28,12 @@ module.exports = {
     },
     resolve: {
         alias: {
-            Assets: path.resolve(__dirname, "src/assets/")
+            Assets: path.resolve(__dirname, "src/assets/"),
+            Components: path.resolve(__dirname, "src/components/"),
+            Contexts: path.resolve(__dirname, "src/contexts/"),
+            Hooks: path.resolve(__dirname, "src/hooks/"),
+            Services: path.resolve(__dirname, "src/services/"),
+            Views: path.resolve(__dirname, "src/views/")
         }
     },
     module: {
@@ -94,6 +100,7 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: "[name].css",
             chunkFilename: "static/css/[name].[hash:8].css"
-        })
-    ]
+        }),
+        new Dotenv()
+    ],
 }
