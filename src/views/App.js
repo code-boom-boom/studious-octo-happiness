@@ -1,9 +1,11 @@
 import React, {Fragment, useContext} from "react";
-import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
 import {UIContext, UserContext} from "../App";
 import TopNavBar from "Components/Navbar/TopNavBar";
 import Auth from "./Auth";
 import classnames from "classnames";
+import ProtectedRoute from "../utils/ProtectedRoute";
+import Home from "./Home";
 
 function MainApp() {
     const { uiState, uiDispatch } = useContext(UIContext);
@@ -24,7 +26,13 @@ function MainApp() {
                             <Route
                                 exact
                                 path="/"
-                                render={ () => !userState.isLoggedIn ? (<Auth />) : (<div>This is dummy</div>) }
+                                render={ () => !userState.isLoggedIn ? (<Auth />) : (<Redirect to="/home" />) }
+                            />
+                            <ProtectedRoute
+                                exact
+                                path="/home"
+                                component={ Home }
+                                isLoggedIn={ userState.isLoggedIn }
                             />
                         </Switch>
                     </div>

@@ -3,7 +3,7 @@ import {Button, CircularProgress, Divider, FormControl, TextField, Typography} f
 
 import useLoginUser from "Hooks/useLoginUser";
 
-function LoginForm() {
+function LoginForm({ toggleForm }) {
 
     const {
         loading,
@@ -58,6 +58,7 @@ function LoginForm() {
                             type="button"
                             variant="contained"
                             className="create-btn"
+                            onClick={ () => toggleForm(true) }
                         >
                             <Typography variant="h6">Create New Account</Typography>
                         </Button>

@@ -1,3 +1,6 @@
+/**
+ * Top Navigation Bar Component
+ */
 import React from "react";
 
 function TopNavBar() {

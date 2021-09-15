@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Container, Grid, Typography, useMediaQuery, useTheme} from "@material-ui/core";
 
 // Text Logo
@@ -6,11 +6,15 @@ import logo from "Assets/images/logos/facebook.svg";
 import RecentLogins from "Components/Auth/RecentLogins";
 import LoginForm from "Components/Auth/LoginForm";
 import Footer from "../components/Auth/Footer/Footer";
+import SignupForm from "../components/Auth/SignupForm";
 
 function Auth() {
 
     const theme = useTheme();
     const mdScreen = useMediaQuery(theme.breakpoints.up("md"));
+
+    const [toggleSignUpForm, setToggleSignUpForm] = useState(false);
+
     return (
         <div className="auth-page-content">
             <div className="auth-container">
@@ -40,7 +44,7 @@ function Auth() {
                             <RecentLogins />
                         </div>
                         <div className="auth-grid-item-2">
-                            <LoginForm />
+                            <LoginForm toggleForm={ setToggleSignUpForm } />
                         </div>
                     </div>
                 </Container>
@@ -48,6 +52,7 @@ function Auth() {
             <div className="auth-footer">
                 <Footer />
             </div>
+            <SignupForm open={ toggleSignUpForm } setLoginOpen={ setToggleSignUpForm } />
         </div>
     );
 }

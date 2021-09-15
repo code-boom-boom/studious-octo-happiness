@@ -12,7 +12,7 @@ import { initialUserState, UserReducer } from "Contexts/UserContext";
 
 // View
 import MainApp from "Views/App";
-import {createTheme, MuiThemeProvider} from "@material-ui/core";
+import { unstable_createMuiStrictModeTheme as createTheme, MuiThemeProvider} from "@material-ui/core";
 
 // Context
 export const UIContext = createContext();
