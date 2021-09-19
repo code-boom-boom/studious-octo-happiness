@@ -5,7 +5,6 @@ import React from "react";
 import { Redirect, Route } from "react-router-dom";
 
 function ProtectedRoute({ component: Component, isLoggedIn, ...rest }) {
-    console.log("asdfasd");
     return (
         <Route
             { ...rest }

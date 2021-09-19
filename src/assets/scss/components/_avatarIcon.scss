@@ -1,0 +1,26 @@
+.avatar-container {
+
+  position: relative;
+  overflow: hidden;
+  display: flex;
+
+  img {
+    border-radius: 100%;
+    object-fit: cover;
+
+    &.avatar-sm {
+      width: 28px;
+      height: 28px;
+    }
+
+    &.avatar-md {
+      width: 36px;
+      height: 36px;
+    }
+
+    &.avatar-lg {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}

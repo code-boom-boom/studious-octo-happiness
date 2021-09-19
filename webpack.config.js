@@ -33,6 +33,7 @@ module.exports = {
             Contexts: path.resolve(__dirname, "src/contexts/"),
             Hooks: path.resolve(__dirname, "src/hooks/"),
             Services: path.resolve(__dirname, "src/services/"),
+            Utils: path.resolve(__dirname, "src/utils/"),
             Views: path.resolve(__dirname, "src/views/")
         }
     },

@@ -1,0 +1,136 @@
+.banner {
+
+  .left-nav-container {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: $header-height;
+    padding-left: 16px;
+    padding-right: 16px;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+
+    .logo {
+
+      img {
+        width: 40px;
+      }
+    }
+  }
+
+  .main-navbar-container {
+
+    box-shadow: 0 1px 5px $shadow-1;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: $header-height;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+
+    .main-menu-list {
+
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      height: $header-height;
+      width: 680px;
+      display: grid;
+      grid-auto-columns: 1fr;
+      grid-auto-flow: column;
+      grid-column-gap: 8px;
+
+      .menu-item-container {
+        height: 100%;
+        padding: 4px;
+
+        .menu-item-wrapper {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          cursor: pointer;
+          border-radius: 8px;
+          position: relative;
+
+          .menu-item-icon {
+
+            height: calc(100% - 8px);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            svg {
+              font-size: 28px;
+              color: $secondary-icon;
+            }
+
+          }
+
+          &.active {
+
+            &:after {
+              content: "";
+              width: 100%;
+              height: 4px;
+              background: $primary;
+              position: absolute;
+              top: 100%;
+              left: 0;
+              border-top-left-radius: 4px;
+              border-top-right-radius: 4px;
+            }
+
+            .menu-item-icon {
+              svg {
+                color: $primary;
+              }
+            }
+          }
+
+          &:not(.active):hover {
+            background: $fds-gray-05;
+          }
+        }
+      }
+    }
+  }
+
+  .right-nav-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: $header-height;
+    padding-right: 16px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    z-index: 1;
+
+    .profile-container {
+      display: flex;
+      height: 36px;
+      align-items: center;
+      padding: 0 4px;
+      border-radius: 36px;
+      text-decoration: none;
+      transition: .5s;
+
+      &:hover {
+        background: $fds-black-alpha-05;
+      }
+
+      .profile-name {
+        margin: 0 8px;
+        color: $fds-black;
+        font-weight: 500;
+      }
+    }
+  }
+}
